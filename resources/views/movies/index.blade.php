@@ -5,6 +5,8 @@
 </head>
 <body>
     <h1>Movies List</h1>
+    <a href="{{ route('movies.create') }}" class="btn">Add New Movie</a>
+
 
     <a href="{{ route('movies.create') }}">Add New Movie</a>
 
@@ -20,15 +22,15 @@
             <th>Genre</th>
             <th>Actions</th>
         </tr>
-        @foreach ($movies as $movie)
+        @foreach ($movies as $Movie)
             <tr>
-                <td>{{ $movie->id }}</td>
-                <td>{{ $movie->movie_name }}</td>
-                <td>{{ $movie->movie_description }}</td>
-                <td>{{ $movie->movie_gener }}</td>
+                <td>{{ $Movie->id }}</td>
+                <td>{{ $Movie->movie_name }}</td>
+                <td>{{ $Movie->movie_description }}</td>
+                <td>{{ $Movie->movie_gener }}</td>
                 <td>
-                    <a href="{{ route('movies.edit', $movie->id) }}">Edit</a>
-                    <form action="{{ route('movies.destroy', $movie->id) }}" method="POST" style="display:inline;">
+                    <a href="{{ route('movies.edit', $Movie->id) }}">Edit</a>
+                    <form action="{{ route('movies.destroy', $Movie->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit">Delete</button>

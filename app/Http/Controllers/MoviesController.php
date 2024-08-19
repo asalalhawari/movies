@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\movies;
+use App\Models\Movie;
 use Illuminate\Http\Request;
 
 class MoviesController extends Controller
@@ -12,7 +12,7 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        $movie = movies::all();
+        $movies = Movie::all();
         return view('movies.index', compact('movies'));
     }
 
@@ -34,7 +34,7 @@ class MoviesController extends Controller
             'movie_description' => 'required',
             'movie_gener' => 'required',
         ]);
-        movies::create($request->all());
+        Movie::create($request->all());
 
         return redirect()->route('movies.index')
                         ->with('success', 'تم إضافة الفيلم بنجاح');
@@ -43,7 +43,7 @@ class MoviesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(movies $movies)
+    public function show(Movie $movie)
     {
         //
     }
@@ -51,34 +51,33 @@ class MoviesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(movies $movies)
+    public function edit(Movie $movie)
     {
         return view('movies.edit', compact('movie'));
-
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, movies $movies)
+    public function update(Request $request, Movie $movie)
     {
         $request->validate([
             'movie_name' => 'required',
             'movie_description' => 'required',
             'movie_gener' => 'required',
         ]);
-        $movies->update($request->all());
+        $movie->update($request->all());
 
         return redirect()->route('movies.index')
-            ->with('success', 'Movie updated successfully.');
+            ->with('success', 'تم تحديث الفيلم بنجاح.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(movies $movies)
+    public function destroy(Movie $movie)
     {
-        $movies->delete();
+        $movie->delete();
 
         return redirect()->route('movies.index')
                         ->with('success', 'تم حذف الفيلم بنجاح');

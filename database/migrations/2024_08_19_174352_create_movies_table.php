@@ -16,8 +16,7 @@ class CreateMoviesTable extends Migration
             $table->timestamps();
         });
     }
-
-    public function down()
+   public function down()
     {
         Schema::dropIfExists('movies');
     }
