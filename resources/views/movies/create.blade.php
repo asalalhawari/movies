@@ -4,7 +4,7 @@
     <title>Add New Movie</title>
 </head>
 <body>
-    <h1>Add New Movie</h1>
+    
 
     <form action="{{ route('movies.store') }}" method="POST">
         @csrf

@@ -2,14 +2,11 @@
 <html>
 <head>
     <title>All Movies</title>
+    
 </head>
 <body>
     <h1>Movies List</h1>
     <a href="{{ route('movies.create') }}" class="btn">Add New Movie</a>
-
-
-    <a href="{{ route('movies.create') }}">Add New Movie</a>
-
     @if ($message = Session::get('success'))
         <p>{{ $message }}</p>
     @endif
